@@ -9,6 +9,7 @@ public class Movement : MonoBehaviour
     public ParticleSystem particles;
     public float forceMultiplier = 500f;
     public float jumpForceMultiplier = 30000f;
+    public float maximumVelocity = 10f;
 
     public Vector3 startPos;
     public Vector3 initialVelocity;
@@ -71,6 +72,8 @@ public class Movement : MonoBehaviour
         {
             ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
         }
+
+        ApplyVelocityCeiling();
     }
 
     private void killPlayer() {
@@ -80,8 +83,36 @@ public class Movement : MonoBehaviour
         particles.Stop();
     }
 
-    private Vector3 Rotate90(Vector3 aDir)
-     {
+    private Vector3 Rotate90(Vector3 aDir) {
          return new Vector3(aDir.z, 0, -aDir.x);
-     }
+    }
+
+    // Apply a cap to the horiztontal components of the velocity vector (ignores y axis)
+    private void ApplyVelocityCeiling()
+    {
+        Vector3 horiztonalVelocityVector = ball.velocity;
+        horiztonalVelocityVector.y = 0;
+
+        float horiztonalVelocityMagnitude = horiztonalVelocityVector.magnitude;
+        Debug.Log("Velocity:" + horiztonalVelocityMagnitude);
+
+        if (horiztonalVelocityMagnitude > maximumVelocity)
+        {
+            // If we're > the allowed maximum velocity, we need to reassign the velocity vector
+            // to be within the allowable x/z magnitude without changing the
+            // x/z magnitude ratio.
+            // 
+            // Do this by saving the y magnitude, normalizing the current velocity
+            // vector with y zeroed out, multiply by the allowed x/z velocity magnitude,
+            // then reassign the previous y magnitude.
+
+            float oldYVelocityMagnitude = ball.velocity.y;
+            Vector3 scaledHorizontalVelocityVector = horiztonalVelocityVector.normalized * maximumVelocity;
+            Vector3 newVelocity = Vector3.zero; // I don't know how to initialize a new Vector3, and I'm on a plane so i can't google it. -_-
+            newVelocity.Set(scaledHorizontalVelocityVector.x, oldYVelocityMagnitude, scaledHorizontalVelocityVector.z);
+
+            ball.velocity = newVelocity;
+            Debug.Log("Reassigned Velocity");
+        }
+    }
 }
