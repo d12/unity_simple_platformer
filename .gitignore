@@ -1,0 +1,7 @@
+.DS_STORE
+tmp/
+.vs/
+Library/
+Temp/
+Logs/
+obj/
