@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour
 
     public Vector3 startPos;
     public Vector3 initialVelocity;
+    public SphereCollider ballCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -68,9 +69,16 @@ public class Movement : MonoBehaviour
         }
 
         // Space
-        if (System.Math.Abs(ball.velocity.y) < 0.001 && Input.GetKey("space"))
+        if (Input.GetKey("space"))
         {
-            ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
+            if (System.Math.Abs(ball.velocity.y) < 0.0001) // For some reason, Epsilon breaks this part sometimes.
+            {                                              // TODO: Find a better way to tell when we're on a platform.
+                ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
+            }
+            else
+            {
+                Debug.Log("Cannot jump. y velo: " + ball.velocity.y);
+            }   
         }
 
         ApplyVelocityCeiling();
@@ -94,7 +102,6 @@ public class Movement : MonoBehaviour
         horiztonalVelocityVector.y = 0;
 
         float horiztonalVelocityMagnitude = horiztonalVelocityVector.magnitude;
-        Debug.Log("Velocity:" + horiztonalVelocityMagnitude);
 
         if (horiztonalVelocityMagnitude > maximumVelocity)
         {
@@ -112,7 +119,6 @@ public class Movement : MonoBehaviour
             newVelocity.Set(scaledHorizontalVelocityVector.x, oldYVelocityMagnitude, scaledHorizontalVelocityVector.z);
 
             ball.velocity = newVelocity;
-            Debug.Log("Reassigned Velocity");
         }
     }
 }
