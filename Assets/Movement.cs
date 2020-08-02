@@ -15,6 +15,8 @@ public class Movement : MonoBehaviour
     public Vector3 initialVelocity;
     public SphereCollider ballCollider;
 
+    public bool jumpOnLastFrame = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class Movement : MonoBehaviour
 
         Vector3 forwardVector = cam.forward;
 
-        // Looking up or down shouldn't make us jump higher or lower, 
+        // Looking up or down shouldn't make us jump higher or lower,
         // so zero out the y vector component
         forwardVector.y = 0;
 
@@ -71,14 +73,14 @@ public class Movement : MonoBehaviour
         // Space
         if (Input.GetKey("space"))
         {
-            if (System.Math.Abs(ball.velocity.y) < 0.0001) // For some reason, Epsilon breaks this part sometimes.
-            {                                              // TODO: Find a better way to tell when we're on a platform.
+            if (System.Math.Abs(ball.velocity.y) < 0.0001 && !jumpOnLastFrame) // For some reason, Epsilon breaks this part sometimes.
+            {
                 ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
             }
-            else
-            {
-                Debug.Log("Cannot jump. y velo: " + ball.velocity.y);
-            }   
+            
+            jumpOnLastFrame = true;
+        } else {
+            jumpOnLastFrame = false;
         }
 
         ApplyVelocityCeiling();
@@ -108,7 +110,7 @@ public class Movement : MonoBehaviour
             // If we're > the allowed maximum velocity, we need to reassign the velocity vector
             // to be within the allowable x/z magnitude without changing the
             // x/z magnitude ratio.
-            // 
+            //
             // Do this by saving the y magnitude, normalizing the current velocity
             // vector with y zeroed out, multiply by the allowed x/z velocity magnitude,
             // then reassign the previous y magnitude.
