@@ -27,7 +27,7 @@ public class Movement : MonoBehaviour
     void FixedUpdate()
     {
         // Death
-        if (ball.position.y < -5)
+        if (ball.position.y < -3)
         {
             killPlayer();
             return;
@@ -77,7 +77,7 @@ public class Movement : MonoBehaviour
             {
                 ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
             }
-            
+
             jumpOnLastFrame = true;
         } else {
             jumpOnLastFrame = false;
