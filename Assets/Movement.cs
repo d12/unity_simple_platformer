@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
+    public GameObject ballObject;
     public Rigidbody ball;
     public Transform cam;
     public ParticleSystem particles;
@@ -15,12 +16,17 @@ public class Movement : MonoBehaviour
     public Vector3 initialVelocity;
     public SphereCollider ballCollider;
 
-    public bool jumpOnLastFrame = false;
+    private bool jumpOnLastFrame = false;
+    private float ballRadius;
 
     // Start is called before the first frame update
     void Start()
     {
         ball.position = startPos;
+
+        float ballScale = ballObject.transform.localScale.y;
+        ballRadius = ball.GetComponent<SphereCollider>().radius * ballScale;
+        Debug.Log(ballRadius);
     }
 
     // Update is called once per frame
@@ -73,8 +79,12 @@ public class Movement : MonoBehaviour
         // Space
         if (Input.GetKey("space"))
         {
-            if (System.Math.Abs(ball.velocity.y) < 0.0001 && !jumpOnLastFrame) // For some reason, Epsilon breaks this part sometimes.
+            if (isOnGround() && !jumpOnLastFrame) // For some reason, Epsilon breaks this part sometimes.
             {
+                Vector3 velocity = ball.velocity;
+                velocity.y = 0;
+                ball.velocity = velocity;
+
                 ball.AddForce(0, jumpForceMultiplier * Time.deltaTime, 0);
             }
 
@@ -122,5 +132,24 @@ public class Movement : MonoBehaviour
 
             ball.velocity = newVelocity;
         }
+    }
+
+    private bool isOnGround()
+    {
+        // On a slope the bottom of the ball may not be touching the floor.
+        // So we give some buffer for how far above the ground an object can be.
+        float leniency = 0.2f;
+
+        if (Physics.Raycast(bottomOfBall(), Vector3.down, leniency)){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private Vector3 bottomOfBall()
+    {
+        // Raise the bottom of the ball by a small amount otherwise the raycast goes right through the floor.
+        return ball.position - (new Vector3(0, ballRadius - 0.01f, 0));
     }
 }

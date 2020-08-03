@@ -509,7 +509,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.8
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -554,7 +554,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.5915e-41, y: 2.3648018e-35, z: 1e-45, w: -7.08628e+25}
+  m_BoundingSphereOverride: {x: 0, y: 3.8473496e-25, z: 4.5787e-41, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -566,7 +566,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 170076733}
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -3, y: 1000, z: -36.04}
+  m_LocalPosition: {x: -3, y: 1000, z: 3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -912,6 +912,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b49159d6dc4370bcbe70545bbcb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballObject: {fileID: 541125310}
   ball: {fileID: 541125317}
   cam: {fileID: 534669905}
   particles: {fileID: 831045145}
@@ -921,7 +922,6 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
   ballCollider: {fileID: 0}
-  jumpOnLastFrame: 0
 --- !u!54 &541125317
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1484,6 +1484,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c5b49159d6dc4370bcbe70545bbcb3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ballObject: {fileID: 0}
   ball: {fileID: 778255760}
   cam: {fileID: 534669905}
   particles: {fileID: 831045145}
@@ -1493,7 +1494,6 @@ MonoBehaviour:
   startPos: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
   ballCollider: {fileID: 0}
-  jumpOnLastFrame: 0
 --- !u!1001 &797910217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6725,7 +6725,7 @@ PrefabInstance:
     - target: {fileID: 64003429245985946, guid: 81f51ec42d5c7784aa8e8d5298eddaa0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
@@ -6799,7 +6799,7 @@ PrefabInstance:
     - target: {fileID: 64003429245985946, guid: 81f51ec42d5c7784aa8e8d5298eddaa0,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 81f51ec42d5c7784aa8e8d5298eddaa0, type: 3}
