@@ -320,6 +320,9 @@
  <Reference Include="UnityEditor.Purchasing">
  <HintPath>/Users/d12/dev/unity_simple_platformer/Library/PackageCache/com.unity.purchasing@2.0.6/Editor/UnityEditor.Purchasing.dll</HintPath>
  </Reference>
+ <Reference Include="ArchimedsLab">
+ <HintPath>/Users/d12/dev/unity_simple_platformer/Assets/FloatingEntities/Scripts/ArchimedsLab.dll</HintPath>
+ </Reference>
  <Reference Include="nunit.framework">
  <HintPath>/Users/d12/dev/unity_simple_platformer/Library/PackageCache/com.unity.ext.nunit@1.0.0/net35/unity-custom/nunit.framework.dll</HintPath>
  </Reference>

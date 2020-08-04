@@ -61,9 +61,24 @@
      <Compile Include="Assets\FollowPlayer.cs" />
      <Compile Include="Assets\Movement.cs" />
      <Compile Include="Assets\WinScript.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityRealist.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityFlat.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\OceanAdvanced.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\WakeGenerator.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\BoatController.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\GameEntity.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\PropellerBoats.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\Tools\Proxies.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityStorm.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\Orbital.cs" />
+     <Compile Include="Assets\FloatingEntities\Scripts\SplashGenerator.cs" />
+     <Compile Include="Assets\FloatingBall.cs" />
+     <None Include="Assets\FloatingEntities\Shaders\Ocean.shader" />
+     <None Include="Assets\FloatingEntities\Shaders\OceanAdvanced.shader" />
      <None Include="Assets\LowPolyWater_Pack\Shaders\WaterShaded.shader" />
      <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\greyRoadStudio\LowPolyTreePack\readme.txt" />
+     <None Include="Assets\FloatingEntities\Shaders\WaterToolBox.cginc" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>/Users/d12/dev/unity_simple_platformer/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
@@ -309,6 +324,9 @@
  </Reference>
  <Reference Include="Unity.Analytics.StandardEvents">
  <HintPath>/Users/d12/dev/unity_simple_platformer/Library/PackageCache/com.unity.analytics@3.3.5/AnalyticsStandardEvents/Unity.Analytics.StandardEvents.dll</HintPath>
+ </Reference>
+ <Reference Include="ArchimedsLab">
+ <HintPath>/Users/d12/dev/unity_simple_platformer/Assets/FloatingEntities/Scripts/ArchimedsLab.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>/Applications/Unity/Hub/Editor/2020.1.0f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
