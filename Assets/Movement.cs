@@ -26,7 +26,6 @@ public class Movement : MonoBehaviour
 
         float ballScale = ballObject.transform.localScale.y;
         ballRadius = ball.GetComponent<SphereCollider>().radius * ballScale;
-        Debug.Log(ballRadius);
     }
 
     // Update is called once per frame
