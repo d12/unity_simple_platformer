@@ -11,6 +11,7 @@ public class Movement : MonoBehaviour
     public float forceMultiplier = 500f;
     public float jumpForceMultiplier = 30000f;
     public float maximumVelocity = 10f;
+    public float jumpHeaviness = 1f;
 
     public Vector3 startPos;
     public Vector3 initialVelocity;
@@ -48,6 +49,8 @@ public class Movement : MonoBehaviour
         // The vector perpendicular to the forward vector used when moving left and right
         Vector3 perpendicularVector = Rotate90(forwardVector);
 
+        bool onGround = isOnGround();
+
         // Left
         if (Input.GetKey("a"))
         {
@@ -75,7 +78,7 @@ public class Movement : MonoBehaviour
         // Space
         if (Input.GetKey("space"))
         {
-            if (isOnGround() && !jumpOnLastFrame) // For some reason, Epsilon breaks this part sometimes.
+            if (onGround && !jumpOnLastFrame) // For some reason, Epsilon breaks this part sometimes.
             {
                 Vector3 velocity = ball.velocity;
                 velocity.y = 0;
@@ -87,6 +90,10 @@ public class Movement : MonoBehaviour
             jumpOnLastFrame = true;
         } else {
             jumpOnLastFrame = false;
+        }
+
+        if (!onGround) {
+            ball.AddForce(0, -1 * jumpHeaviness * Time.deltaTime, 0);
         }
 
         ApplyVelocityCeiling();

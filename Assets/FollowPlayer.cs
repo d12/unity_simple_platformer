@@ -7,7 +7,7 @@ using UnityEngine;
 public class FollowPlayer : MonoBehaviour
 {
     public Transform target;
-    public float distance = 5.0f;
+    public float distance = 8.0f;
     public float xSpeed = 120.0f;
     public float ySpeed = 120.0f;
 

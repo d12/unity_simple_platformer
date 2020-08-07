@@ -1072,7 +1072,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 534669902}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &534669904
 Camera:
   m_ObjectHideFlags: 0
@@ -1143,9 +1143,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1947505510}
-  distance: 6
-  xSpeed: 120
-  ySpeed: 120
+  distance: 9
+  xSpeed: 60
+  ySpeed: 60
   yMinLimit: -20
   yMaxLimit: 80
 --- !u!1001 &536445954
@@ -1242,6 +1242,7 @@ MonoBehaviour:
   forceMultiplier: 800
   jumpForceMultiplier: 30000
   maximumVelocity: 13
+  jumpHeaviness: 1
   startPos: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
   ballCollider: {fileID: 0}
@@ -1275,6 +1276,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buoyancyForce: 1000
   dampenForce: 0.01
+  waterHeight: -1.8
 --- !u!1 &598701419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1840,6 +1842,7 @@ MonoBehaviour:
   forceMultiplier: 800
   jumpForceMultiplier: 30000
   maximumVelocity: 13
+  jumpHeaviness: 1
   startPos: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
   ballCollider: {fileID: 0}
@@ -8350,11 +8353,27 @@ CapsuleCollider:
   m_GameObject: {fileID: 1601833920}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.4646826
   m_Height: 1.7245162
   m_Direction: 1
   m_Center: {x: -0.00008055568, y: 0.86424947, z: 0.0032529682}
+--- !u!54 &1601833925
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601833920}
+  serializedVersion: 2
+  m_Mass: 10
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!64 &1601833926
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -8742,7 +8761,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buoyancyForce: 1100
-  dampenForce: 0
+  dampenForce: 0.01
+  waterHeight: -1.8
 --- !u!1001 &1754177824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8756,19 +8776,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1965410809269166, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.12
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.49800864
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.54
+      value: -2.29
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8804,15 +8824,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalScale.x
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalScale.y
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4932140778729472, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
       propertyPath: m_LocalScale.z
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc89cff11dc72544faaaa69b501fd596, type: 3}
@@ -9099,7 +9119,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4283527512771772, guid: e332982425ee2ec48b168979bb7b43f5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.14
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 4283527512771772, guid: e332982425ee2ec48b168979bb7b43f5, type: 3}
       propertyPath: m_LocalPosition.z
@@ -9330,7 +9350,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buoyancyForce: 1100
-  dampenForce: 0
+  dampenForce: 0.01
+  waterHeight: -1.8
 --- !u!54 &1914975106
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9467,7 +9488,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4646826
+  m_Radius: 0.464
   m_Height: 2.0323248
   m_Direction: 1
   m_Center: {x: 0, y: 1.0174243, z: 0.026983708}
@@ -9487,9 +9508,10 @@ MonoBehaviour:
   ball: {fileID: 1947505514}
   cam: {fileID: 534669905}
   particles: {fileID: 831045145}
-  forceMultiplier: 800
-  jumpForceMultiplier: 30000
-  maximumVelocity: 13
+  forceMultiplier: 1000
+  jumpForceMultiplier: 20000
+  maximumVelocity: 8
+  jumpHeaviness: 200
   startPos: {x: 0, y: 0, z: 0}
   initialVelocity: {x: 0, y: 0, z: 0}
   ballCollider: {fileID: 0}
@@ -9517,7 +9539,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0

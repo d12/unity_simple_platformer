@@ -7,47 +7,56 @@ public class FloatingObject : MonoBehaviour
 {
     Rigidbody rb;
 
-    public float buoyancyForce = 1f;
+    // Linearly scales the force of buoyancy
+    // This has to be tuned based on the number of buoyancy points you define,
+    // the mass of your object, and the force of gravity.
+    public float buoyancyForce = 1000f;
+
+    // A value between 0 and 1, higher dampenForce causes rotational energy
+    // to dampen faster. 0.01 seems good in my experience. Not needed if your water
+    // applies a force to your floating objects.
     public float dampenForce = 0.01f;
 
-    private float waterHeight = -1.8f;
-    private float radius;
+    // The height of your water.
+    // TODO: Be able to find the height of the water below the point
+    // This is easy with static water but very difficult with wavy water and no mesh collider on the water.
+    public float waterHeight = -1.8f;
 
     void Awake() {
         rb = GetComponent<Rigidbody>();
-        radius = GetComponent<Renderer>().bounds.size.y / 2;
     }
 
     void FixedUpdate() {
-        Vector3[] objectCorners = objectCornersWorldSpace();
+        Vector3[] objectCorners = ObjectCornersWorldSpace();
 
-        applyBuoyancyForces(objectCorners);
+        ApplyBuoyancyForces(objectCorners);
     }
 
-    float percentageInWater(float objHeight){
-        if(waterHeight < objHeight) {
-            return 0;
-        } else {
-            return Mathf.Pow(waterHeight - objHeight, 2);
-        }
-    }
-
-    void applyBuoyancyForces(Vector3[] corners) {
+    void ApplyBuoyancyForces(Vector3[] corners) {
         foreach (Vector3 corner in corners)
         {
-            float percentageInWaterFloat = percentageInWater(corner.y);
-            Vector3 force = percentageInWaterFloat * buoyancyForce * Vector3.up * Time.deltaTime;
+            // Squaring this number for a non-linear relationship between depth and buoyancy.
+            float depthInWaterForceFactor = Mathf.Pow(DepthInWater(corner.y), 2);
+            Vector3 force = Vector3.up * (depthInWaterForceFactor * buoyancyForce * Time.deltaTime);
+
             rb.AddForceAtPosition(force, corner);
         }
     }
 
-    void applyVelocityDapening() {
+    float DepthInWater(float objHeight){
+        return Mathf.Abs(waterHeight - objHeight);
+    }
+
+    void ApplyVelocityDapening() {
         Vector3 velocity = rb.velocity;
         velocity = velocity * (1 - dampenForce);
         rb.velocity = velocity;
     }
 
-    Vector3[] objectCornersWorldSpace() {
+    // This returns the four bottom corners of a cube in world space.
+    // To use this script with a non-cube, return at least 3 evenly spaced points
+    // on the bottom of your object.
+    Vector3[] ObjectCornersWorldSpace() {
         Vector3[] vertices = new Vector3[4];
 
         vertices[0] = transform.TransformPoint(new Vector3(.5f, -.5f, -.5f));
