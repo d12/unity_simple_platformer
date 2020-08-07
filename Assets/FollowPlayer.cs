@@ -45,11 +45,14 @@ public class FollowPlayer : MonoBehaviour
             y = ClampAngle(y, yMinLimit, yMaxLimit);
 
             Quaternion rotation = Quaternion.Euler(y, x, 0);
+            Quaternion targetRotation = Quaternion.Euler(0, x, 0);
 
             Vector3 negDistance = new Vector3(0.0f, 0.0f, -distance);
             Vector3 position = rotation * negDistance + target.position;
 
             transform.rotation = rotation;
+            target.rotation = targetRotation;
+
             transform.position = position;
         }
     }

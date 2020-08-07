@@ -55,7 +55,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\MovementScript.cs" />
      <Compile Include="Assets\FloatingEntities\Scripts\GameEntity\FloatingGameEntityRealist.cs" />
      <Compile Include="Assets\ParticleScript.cs" />
      <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
