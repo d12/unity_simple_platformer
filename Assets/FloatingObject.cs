@@ -22,6 +22,8 @@ public class FloatingObject : MonoBehaviour
     // This is easy with static water but very difficult with wavy water and no mesh collider on the water.
     public float waterHeight = -1.8f;
 
+    public bool cube = true;
+
     void Awake() {
         rb = GetComponent<Rigidbody>();
     }
@@ -35,8 +37,7 @@ public class FloatingObject : MonoBehaviour
     void ApplyBuoyancyForces(Vector3[] corners) {
         foreach (Vector3 corner in corners)
         {
-            // Squaring this number for a non-linear relationship between depth and buoyancy.
-            float depthInWaterForceFactor = Mathf.Pow(DepthInWater(corner.y), 2);
+            float depthInWaterForceFactor = DepthInWater(corner.y);
             Vector3 force = Vector3.up * (depthInWaterForceFactor * buoyancyForce * Time.deltaTime);
 
             rb.AddForceAtPosition(force, corner);
@@ -57,13 +58,21 @@ public class FloatingObject : MonoBehaviour
     // To use this script with a non-cube, return at least 3 evenly spaced points
     // on the bottom of your object.
     Vector3[] ObjectCornersWorldSpace() {
-        Vector3[] vertices = new Vector3[4];
+        if(cube) {
+            Vector3[] vertices = new Vector3[4];
 
-        vertices[0] = transform.TransformPoint(new Vector3(.5f, -.5f, -.5f));
-        vertices[1] = transform.TransformPoint(new Vector3(.5f, -.5f, .5f));
-        vertices[2] = transform.TransformPoint(new Vector3(-.5f, -.5f, -.5f));
-        vertices[3] = transform.TransformPoint(new Vector3(-.5f, -.5f, .5f));
+            vertices[0] = transform.TransformPoint(new Vector3(.5f, -.5f, -.5f));
+            vertices[1] = transform.TransformPoint(new Vector3(.5f, -.5f, .5f));
+            vertices[2] = transform.TransformPoint(new Vector3(-.5f, -.5f, -.5f));
+            vertices[3] = transform.TransformPoint(new Vector3(-.5f, -.5f, .5f));
 
-        return vertices;
+            return vertices;
+        } else {
+            Vector3[] vertices = new Vector3[1];
+            vertices[0] = transform.position;
+            Debug.Log(vertices[0]);
+
+            return vertices;
+        }
     }
 }
