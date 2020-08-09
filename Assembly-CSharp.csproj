@@ -65,16 +65,9 @@
      <Compile Include="Assets\FirstPersion AIO Pack\FirstPersonAIO\FirstPersonAIO.cs" />
      <Compile Include="Assets\Island\Scripts\WaterScroller.cs" />
      <Compile Include="Assets\Island\Scripts\FixedTiling.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\MicroSplatObject.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\GlitterLight.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\MicroSplatKeywords.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\MicroSplatTerrain.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\MicroSplatPropData.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\TextureArrayConfig.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\MicroSplatRuntimeUtil.cs" />
+     <Compile Include="Assets\Turtle.cs" />
+     <Compile Include="Assets\Lowpoly Toon Cat Lite\Demo\Cat_Lite_Demo.cs" />
      <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />
-     <None Include="Assets\MicroSplat\Core\Examples\Scene\MicroSplatData\MicroSplat_Base.shader" />
-     <None Include="Assets\MicroSplat\Core\Examples\Scene\MicroSplatData\MicroSplat.shader" />
      <None Include="Assets\FirstPersion AIO Pack\DemoScene\Working Materials\GlassBumpedDistort.shader" />
      <None Include="Assets\FirstPersion AIO Pack\README.txt" />
      <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Basic.shader" />
@@ -82,7 +75,6 @@
      <None Include="Assets\LowPolyWater_Pack\LowPoly Island\Credits.txt" />
      <None Include="Assets\SimpleSky\ReadMe.txt" />
      <None Include="Assets\greyRoadStudio\LowPolyTreePack\readme.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\MicroSplatAddPass.shader" />
      <None Include="Assets\Lowpoly Nature &amp; Village Pack\HowToSetup.txt" />
      <None Include="Assets\Island\Readme FIRST!.txt" />
  <Reference Include="Unity.Timeline.Editor">

@@ -56,44 +56,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\LowPolyWater_Pack\Scripts\Editor\GeneratePlane.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatShaderGUI_PerTex.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TextureArrayPreprocessor.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor_Baking.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\FeatureDescriptor.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatDefines.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TerrainPainter\TerrainPainter_Painting.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\SurfaceShaderRenderLoopAdapter.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor_WeightLimiting.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor_Convert.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\IRenderLoopAdapter.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TerrainPainter\TerrainPainterWindow.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TextureArrayConfigEditor.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatUtilities.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor_SplatUtilities.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TerrainPainter\TerrainPaintJob.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\MicroSplatVegetationStudio.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\TerrainPainter\TerrainPainter_GUI.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatShaderGUI_Compiler.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatShaderGUI.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatTerrainEditor_TerrainDesc.cs" />
-     <Compile Include="Assets\MicroSplat\Core\Scripts\Editor\MicroSplatBaseFeatures.cs" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_terrain_surface_fragment.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_shared.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_cbuffer_vsgrassmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\InternalShaders\HeightFromNormal.shader" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\InternalShaders\NormalSAOFromDiffuse.shader" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\InternalShaders\NormalSAOFromNormal.shader" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_terrain_body.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_func_vsgrassmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_core_cbuffer.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_properties_vsshadowmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_properties_vsgrassmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\InternalShaders\NormalSAOFromHeight.shader" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_func_vsshadowmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\VegetationStudio\Editor\microsplat_cbuffer_vsshadowmap.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_terrain_surface_vertex.txt" />
-     <None Include="Assets\MicroSplat\Core\Scripts\Editor\Fragments\microsplat_properties_splat.txt" />
  <Reference Include="UnityEditor.TestRunner">
  <HintPath>/Users/d12/dev/unity_simple_platformer/Library/ScriptAssemblies/UnityEditor.TestRunner.dll</HintPath>
  </Reference>
