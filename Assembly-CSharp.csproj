@@ -55,18 +55,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\FirstPersion AIO Pack\DemoScene\MiscScripts\Doors.cs" />
      <Compile Include="Assets\ParticleScript.cs" />
      <Compile Include="Assets\LowPolyWater_Pack\Scripts\LowPolyWater.cs" />
      <Compile Include="Assets\FollowPlayer.cs" />
-     <Compile Include="Assets\Movement.cs" />
-     <Compile Include="Assets\WinScript.cs" />
-     <Compile Include="Assets\FloatingObject.cs" />
-     <Compile Include="Assets\FirstPersion AIO Pack\DemoScene\MiscScripts\Doors.cs" />
      <Compile Include="Assets\FirstPersion AIO Pack\FirstPersonAIO\FirstPersonAIO.cs" />
+     <Compile Include="Assets\Movement.cs" />
      <Compile Include="Assets\Island\Scripts\WaterScroller.cs" />
      <Compile Include="Assets\Island\Scripts\FixedTiling.cs" />
-     <Compile Include="Assets\Turtle.cs" />
+     <Compile Include="Assets\WinScript.cs" />
      <Compile Include="Assets\Lowpoly Toon Cat Lite\Demo\Cat_Lite_Demo.cs" />
+     <Compile Include="Assets\FloatingObject.cs" />
+     <Compile Include="Assets\Turtle.cs" />
      <None Include="Assets\Free Low Poly Desert Pack\Materials\Shaders\Vertex_Color_Unlit.shader" />
      <None Include="Assets\FirstPersion AIO Pack\DemoScene\Working Materials\GlassBumpedDistort.shader" />
      <None Include="Assets\FirstPersion AIO Pack\README.txt" />
