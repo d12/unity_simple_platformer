@@ -7,9 +7,9 @@ public class Woodcutting : MonoBehaviour
     public GameObject player;
     public GameObject spawnedLogPrefab;
 
-    float _chopDistance = 5.0f;
+    float _chopDistance = 6.0f;
 
-    float _secondsBetweenChops = 1.0f;
+    float _secondsBetweenChops = .5f;
     float _chopCooldown;
 
     Transform _playerTransform;
@@ -49,8 +49,9 @@ public class Woodcutting : MonoBehaviour
             return false;
         }
 
-        if(_chopCooldown == null) {
+        if(float.IsNaN(_chopCooldown)) {
             // First chop so no cooldown exists yet, we're good
+            Debug.Log("NULL!");
             return true;
         }
 
