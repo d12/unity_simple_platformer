@@ -9,7 +9,7 @@ public class Woodcutting : MonoBehaviour
 
     float _chopDistance = 6.0f;
 
-    float _secondsBetweenChops = .5f;
+    float _secondsBetweenChops = .25f;
     float _chopCooldown;
 
     Transform _playerTransform;
@@ -28,8 +28,9 @@ public class Woodcutting : MonoBehaviour
     //
     // }
 
-    void OnMouseDown() {
-        if(isAllowedToChop()) {
+    void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Axe" && isAllowedToChop()) {
             SpawnLog();
             _chopCooldown = Time.time + _secondsBetweenChops;
         }
@@ -51,7 +52,6 @@ public class Woodcutting : MonoBehaviour
 
         if(float.IsNaN(_chopCooldown)) {
             // First chop so no cooldown exists yet, we're good
-            Debug.Log("NULL!");
             return true;
         }
 

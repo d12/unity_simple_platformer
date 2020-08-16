@@ -10,18 +10,23 @@ public class HoldableItem : MonoBehaviour
     float dampenForce = 0.9f;
 
     // How far can we reach things?
-    float reachLength = 6.0f;
+    float reachLength = 4.5f;
 
     // How far infront of ourselves do we hold objects?
-    float holdLength = 4.0f;
+    float holdLength = 3.0f;
 
     bool isHeld;
+    bool isMousedOver;
+
+    Outline outline;
 
     // Start is called before the first frame update
     void Start()
     {
         isHeld = false;
         _rb = GetComponent<Rigidbody>();
+        outline = GetComponent<Outline>();
+        outline.enabled = false;
     }
 
     void FixedUpdate()
@@ -34,18 +39,39 @@ public class HoldableItem : MonoBehaviour
         }
     }
 
-    void OnMouseDown() {
-        Debug.Log(distanceBetweenPlayerAndObject());
-
-        if(distanceBetweenPlayerAndObject() < reachLength){
-            isHeld = true;
+    void OnMouseEnter() {
+        if(canHoldObject() && !Helpers.instance.getPlayerState().isHoldingSomething) {
+            isMousedOver = true;
+            outline.enabled = true;
         }
+    }
+
+    void OnMouseDown() {
+        if(canHoldObject()){
+            isHeld = true;
+            outline.enabled = false;
+            Helpers.instance.getPlayerState().isHoldingSomething = true;
+        }
+    }
+
+    void OnMouseExit() {
+        isMousedOver = false;
+        outline.enabled = false;
     }
 
     void OnMouseUp() {
         if(isHeld){
             isHeld = false;
+            Helpers.instance.getPlayerState().isHoldingSomething = false;
         }
+
+        if(isMousedOver){
+            outline.enabled = true;
+        }
+    }
+
+    bool canHoldObject() {
+        return (distanceBetweenPlayerAndObject() < reachLength);
     }
 
     // What pos do we want to hold the object in?
