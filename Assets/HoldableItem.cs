@@ -47,7 +47,7 @@ public class HoldableItem : MonoBehaviour
 
             // Rotate the object correctly
             Quaternion deltaRotation = camera.transform.rotation * Quaternion.Inverse(originalCameraRotation);
-            _rb.rotation = originalItemRotation * deltaRotation;
+            _rb.rotation = deltaRotation * originalItemRotation;
         }
     }
 
