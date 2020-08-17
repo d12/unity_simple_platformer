@@ -7,7 +7,8 @@ public class HoldableItem : MonoBehaviour
     public GameObject player;
 
     Rigidbody _rb;
-    float dampenForce = 0.9f;
+    float velocityDampenForce = 0.2f;
+    float angularDampenForce = 0.05f;
 
     // How far can we reach things?
     float reachLength = 4.5f;
@@ -19,6 +20,10 @@ public class HoldableItem : MonoBehaviour
     bool isMousedOver;
 
     Outline outline;
+    Camera camera;
+
+    Quaternion originalItemRotation;
+    Quaternion originalCameraRotation;
 
     // Start is called before the first frame update
     void Start()
@@ -27,15 +32,22 @@ public class HoldableItem : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         outline = GetComponent<Outline>();
         outline.enabled = false;
+        camera = Camera.main;
     }
 
     void FixedUpdate()
     {
         if(isHeld) {
+            // Pull object towards cursor
             _rb.AddForce((desiredItemHoldPosition() - transform.position) * Time.fixedDeltaTime * 10000f);
 
-            _rb.velocity = _rb.velocity * dampenForce;
-            _rb.AddTorque(_rb.angularVelocity * -1.0f * (1 - dampenForce), ForceMode.Force);
+            // Dampen velocity and angular velocity so the item sticks to the cursor instead of bouncing around
+            _rb.velocity = _rb.velocity * (1 - velocityDampenForce);
+            _rb.AddTorque(_rb.angularVelocity * -1.0f * (1 - angularDampenForce), ForceMode.Force);
+
+            // Rotate the object correctly
+            Quaternion deltaRotation = Quaternion.Inverse(originalCameraRotation * Quaternion.Inverse(camera.transform.rotation));
+            _rb.rotation = originalItemRotation * deltaRotation;
         }
     }
 
@@ -51,6 +63,8 @@ public class HoldableItem : MonoBehaviour
             isHeld = true;
             outline.enabled = false;
             Helpers.instance.getPlayerState().isHoldingSomething = true;
+            originalItemRotation = _rb.rotation;
+            originalCameraRotation = camera.transform.rotation;
         }
     }
 
