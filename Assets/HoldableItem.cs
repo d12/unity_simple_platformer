@@ -46,7 +46,7 @@ public class HoldableItem : MonoBehaviour
             _rb.AddTorque(_rb.angularVelocity * -1.0f * (1 - angularDampenForce), ForceMode.Force);
 
             // Rotate the object correctly
-            Quaternion deltaRotation = Quaternion.Inverse(originalCameraRotation * Quaternion.Inverse(camera.transform.rotation));
+            Quaternion deltaRotation = camera.transform.rotation * Quaternion.Inverse(originalCameraRotation);
             _rb.rotation = originalItemRotation * deltaRotation;
         }
     }
