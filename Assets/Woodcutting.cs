@@ -14,35 +14,53 @@ public class Woodcutting : MonoBehaviour
 
     Transform _playerTransform;
 
+    int maxHealth = 5;
+    int health;
 
+    Vector3 initialScale;
+
+    float nextObjectRespawn;
+    float respawnRate = 5.0f;
 
     // Start is called before the first frame update
     void Start()
     {
         _playerTransform = player.transform;
+        initialScale = transform.localScale;
+
+        SpawnObject();
     }
 
-    // Update is called once per frame
-    // void Update()
-    // {
-    //
-    // }
+    void Update()
+    {
+        if(health == 0 && nextObjectRespawn < Time.time){
+            SpawnObject();
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Axe" && isAllowedToChop()) {
-            SpawnLog();
+        if(collision.gameObject.tag == "Axe" && IsAllowedToChop()) {
+            ChopLog();
             _chopCooldown = Time.time + _secondsBetweenChops;
         }
     }
 
-    void SpawnLog() {
+    void ChopLog() {
         GameObject log = Instantiate(spawnedLogPrefab, transform.position + new Vector3(0.5f, 1f, 0.5f), Quaternion.identity);
         HoldableItem script = log.GetComponent<HoldableItem>();
         script.player = player;
+
+        health -= 1;
+
+        transform.localScale = initialScale * ((float)health / maxHealth);
+
+        if(health == 0){
+            SetRespawnTimer();
+        }
     }
 
-    bool isAllowedToChop() {
+    bool IsAllowedToChop() {
         float distance = (_playerTransform.position - transform.position).magnitude;
 
         if(distance > _chopDistance) {
@@ -62,5 +80,14 @@ public class Woodcutting : MonoBehaviour
             // The cooldown period is in the future, must wait!
             return false;
         }
+    }
+
+    void SpawnObject() {
+        health = maxHealth;
+        transform.localScale = initialScale;
+    }
+
+    void SetRespawnTimer() {
+        nextObjectRespawn = Time.time + respawnRate;
     }
 }

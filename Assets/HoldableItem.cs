@@ -69,8 +69,16 @@ public class HoldableItem : MonoBehaviour
     }
 
     void OnMouseExit() {
+        Debug.Log("EXIT!");
         isMousedOver = false;
         outline.enabled = false;
+    }
+
+    void OnMouseOver() {
+        if(!isMousedOver && canHoldObject() && !Helpers.instance.getPlayerState().isHoldingSomething) {
+            isMousedOver = true;
+            outline.enabled = true;
+        }
     }
 
     void OnMouseUp() {
